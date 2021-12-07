@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Road detection map</title>
+    <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="../static/style.css" th:href="@{/style.css}"/>
+    <style type="text/css">
+      div{
+        top: 0%;
+        width: 70%;
+      }
+      #content{
+        position: absolute;
+        left:75%;
+        top: 0%;
+      }
+
+    </style>
+<!--    данные для построения карты и маркера-->
+    <ul th:each="item :${point_data1}">
+        <input type="hidden" id="lat" th:value="${item.lat}"/>
+        <input type="hidden" id="lng" th:value="${item.lng}"/>
+    </ul>
+    <script type="text/javascript" src="../static/map.js" th:src="@{/map.js}"></script>
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9HdzDuOWqmlv-nc3A8MIxKeglFhAT4Tg&callback=initMap&v=weekly"
+            async
+    ></script>
+
+</head>
+<body>
+<div id="map"></div>
+<div id="content", th:each="data :${point_data2}">
+    <!-- вывод данных из бд -->
+    <p><img id="image" src= "../static/images/test.jpg" th:src="${data.image_path}" width="25%" height="25%"></p>
+    <p><label th:text="${data.type}"></label></p>
+    <p><label th:text="${data.size}"></label></p>
+    <p><label th:text="${data.address}"></label></p>
+</div>
+</body>
+</html>

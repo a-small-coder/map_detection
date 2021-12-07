@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:text="'Hello, ' + ${test} + '!'" />
+    <div th:each="el :${point}">
+        <h3 th:text="${el.id}"/>
+    </div>
+</body>
+</html>
