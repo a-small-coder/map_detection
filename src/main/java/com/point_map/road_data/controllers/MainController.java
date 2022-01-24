@@ -25,14 +25,4 @@ public class MainController {
         model.addAttribute("points", data);
         return "table";
     }
-
-    @GetMapping("/map/{id}")
-    public String map(@PathVariable(value = "id") long pointID, Model model){
-        Optional<Road_detection_db> point =  pointRepository.findById(pointID);
-        ArrayList<Road_detection_db> point_data = new ArrayList<>();
-        point.ifPresent(point_data::add);
-        model.addAttribute("point_data1", point_data);
-        model.addAttribute("point_data2", point_data);
-        return "map";
-    }
 }

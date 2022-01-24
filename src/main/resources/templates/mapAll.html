@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Road detection map</title>
+    <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="../static/style.css" th:href="@{/style.css}"/>
+    <style type="text/css"> </style>
+
+    <ul >
+        <var display:none; th:each ="data :${points}">
+            <th:block th:text="${data.lat}" />
+            <th:block th:text="${data.lng}" />
+            <th:block th:text="${data.type}" />
+            <th:block th:text="${data.date}" />
+            <th:block th:text="${data.id}" />
+        </var>
+    </ul>
+    <script type="text/javascript" src="../static/mapAll.js" th:src="@{/mapAll.js}"></script>
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9HdzDuOWqmlv-nc3A8MIxKeglFhAT4Tg&callback=initMap&v=weekly"
+            async
+    ></script>
+</head>
+<body>
+<div id="map"></div>
+</body>
+</html>
