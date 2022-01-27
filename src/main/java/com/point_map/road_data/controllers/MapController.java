@@ -1,6 +1,6 @@
 package com.point_map.road_data.controllers;
 
-import com.point_map.road_data.models.Road_detection_db;
+import com.point_map.road_data.models.Point;
 import com.point_map.road_data.repository.PointRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,8 +21,8 @@ public class MapController {
 
     @GetMapping("/map/{id}")
     public String map(@PathVariable(value = "id") long pointID, Model model){
-        Optional<Road_detection_db> point =  pointRepository.findById(pointID);
-        ArrayList<Road_detection_db> point_data = new ArrayList<>();
+        Optional<Point> point =  pointRepository.findById(pointID);
+        ArrayList<Point> point_data = new ArrayList<>();
         point.ifPresent(point_data::add);
         model.addAttribute("point_data1", point_data);
         model.addAttribute("point_data2", point_data);
@@ -31,7 +31,7 @@ public class MapController {
 
     @GetMapping("/map/all")
     public String mapAll(Model model){
-        Iterable<Road_detection_db> points = pointRepository.findAll();
+        Iterable<Point> points = pointRepository.findAll();
         model.addAttribute("points", points);
         return "mapAll";
 
