@@ -1,9 +1,12 @@
 package com.point_map.road_data.models;
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "point")
-public class Road_detection_db {
+public class Point {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
@@ -18,7 +21,7 @@ public class Road_detection_db {
         private String type;
 
         @Column
-        private String date;
+        private LocalDate date;
 
         @Column
         private String size;
@@ -64,11 +67,11 @@ public class Road_detection_db {
             this.type = type;
         }
 
-        public String getDate() {
+        public LocalDate getDate() {
             return date;
         }
 
-        public void setDate(String date) {
+        public void setDate(LocalDate date) {
             this.date = date;
         }
 
@@ -100,8 +103,21 @@ public class Road_detection_db {
             return name;
         }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+        public void setName(String name) { this.name = name; }
+
+    public Point() {
     }
+
+    public Point(String lat, String lng, String type, LocalDate date, String size, String address, String image_path,
+                 String name) {
+        this.lat = lat;
+        this.lng = lng;
+        this.type = type;
+        this.date = date;
+        this.size = size;
+        this.address = address;
+        this.image_path = image_path;
+        this.name = name;
+    }
+}
 
