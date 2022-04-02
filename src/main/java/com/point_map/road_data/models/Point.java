@@ -1,8 +1,6 @@
 package com.point_map.road_data.models;
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "point")
@@ -106,6 +104,21 @@ public class Point {
         public void setName(String name) { this.name = name; }
 
     public Point() {
+    }
+
+    public Point (String lat, String lng, LocalDate date,String address) {
+        this.lat = lat;
+        this.lng = lng;
+        this.date = date;
+        this.address = address;
+    }
+
+    public Point (String lat, String lng, LocalDate date,String address, String image_path) {
+        this.lat = lat;
+        this.lng = lng;
+        this.date = date;
+        this.address = address;
+        this.image_path = image_path;
     }
 
     public Point(String lat, String lng, String type, LocalDate date, String size, String address, String image_path,
