@@ -7,8 +7,8 @@
     <link rel="stylesheet" type="text/css" href="../static/style.css" th:href="@{/style.css}"/>
     <style type="text/css"> </style>
 
-    <ul >
-        <var display:none; th:each ="data :${points}">
+    <ul id="ul">
+        <var th:each ="data :${points}">
             <th:block th:text="${data.lat}" />
             <th:block th:text="${data.lng}" />
             <th:block th:text="${data.type}" />
@@ -18,8 +18,8 @@
     </ul>
     <script type="text/javascript" src="../static/mapAll.js" th:src="@{/mapAll.js}"></script>
     <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9HdzDuOWqmlv-nc3A8MIxKeglFhAT4Tg&callback=initMap&v=weekly"
-            async
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9HdzDuOWqmlv-nc3A8MIxKeglFhAT4Tg&amp;callback=initMap&amp;v=weekly"
+            async="async"
     ></script>
 </head>
 <body>

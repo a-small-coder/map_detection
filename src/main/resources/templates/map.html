@@ -15,7 +15,6 @@
         left:75%;
         top: 0%;
       }
-
     </style>
 <!--    данные для построения карты и маркера-->
     <ul th:each="item :${point_data1}">
@@ -24,17 +23,15 @@
     </ul>
     <script type="text/javascript" src="../static/map.js" th:src="@{/map.js}"></script>
     <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9HdzDuOWqmlv-nc3A8MIxKeglFhAT4Tg&callback=initMap&v=weekly"
-            async
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9HdzDuOWqmlv-nc3A8MIxKeglFhAT4Tg&amp;callback=initMap&amp;v=weekly"
+            async="async"
     ></script>
-
 </head>
 <body>
 <div id="map"></div>
-<div id="content", th:each="data :${point_data2}">
+<div id="content" th:each="data :${point_data2}">
     <!-- вывод данных из бд -->
-    <img id="image" th:src="${data.image_path}" width="25%" height="25%">
-
+    <img id="image" th:src="${data.image_path}" width="25%" height="25%"/>
     <p><label th:text="${data.type}"></label></p>
     <p><label th:text="${data.size}"></label></p>
     <p><label th:text="${data.address}"></label></p>

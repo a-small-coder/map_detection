@@ -13,5 +13,4 @@ function initMap() {
     new google.maps.Marker({
         position: {lat: parseFloat(data[0]), lng: parseFloat(data[1])},
         map: map})
-
 }

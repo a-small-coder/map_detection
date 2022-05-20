@@ -15,7 +15,6 @@ import java.util.Optional;
 
 @Controller
 public class MapController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
     @Autowired
     private PointRepository pointRepository;
 

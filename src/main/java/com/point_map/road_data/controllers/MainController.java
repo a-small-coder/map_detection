@@ -11,13 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
     @Autowired
     private PointRepository pointRepository;
 
     @GetMapping("/")
     public String table(Model model) {
-        Iterable<Point> data = pointRepository.findAll();
+        Iterable<Point> data = pointRepository.findByOrderByDate();
         model.addAttribute("points", data);
         return "table";
     }

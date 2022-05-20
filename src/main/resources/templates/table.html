@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <title>Список повреждений</title>
     <style type="text/css">
       table{
@@ -9,11 +9,11 @@
           font-weight: 100%;
       }
   </style>
-
 </head>
+
 <body>
 <form action="" method="post">
-        <table border="1">
+        <table border="1" id="table">
             <caption></caption>
             <tr>
                 <th>id</th>
@@ -36,9 +36,6 @@
     </form>
     <form action="/map/all" target="_blank">
         <button>Посмотреть все</button>
-    </form>
-    <form action="/add" target="_blank">
-        <button>Добавить</button>
     </form>
 </body>
 </html>
