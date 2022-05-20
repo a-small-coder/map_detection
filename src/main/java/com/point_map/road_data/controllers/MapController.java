@@ -15,17 +15,14 @@ import java.util.Optional;
 
 @Controller
 public class MapController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
     @Autowired
     private PointRepository pointRepository;
 
     @GetMapping("/map/{id}")
     public String map(@PathVariable(value = "id") long pointID, Model model){
-        Optional<Point> point =  pointRepository.findById(pointID);
-        ArrayList<Point> point_data = new ArrayList<>();
-        point.ifPresent(point_data::add);
-        model.addAttribute("point_data1", point_data);
-        model.addAttribute("point_data2", point_data);
+        ArrayList<Point> pointData = getData(pointID);
+        model.addAttribute("point_data1", pointData);
+        model.addAttribute("point_data2", pointData);
         return "map";
     }
 
@@ -34,6 +31,12 @@ public class MapController {
         Iterable<Point> points = pointRepository.findAll();
         model.addAttribute("points", points);
         return "mapAll";
+    }
 
+    private ArrayList<Point> getData(long pointID){
+        Optional<Point> point =  pointRepository.findById(pointID);
+        ArrayList<Point> pointData = new ArrayList<>();
+        point.ifPresent(pointData::add);
+        return pointData;
     }
 }
