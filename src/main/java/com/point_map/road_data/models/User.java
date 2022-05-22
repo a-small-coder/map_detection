@@ -14,19 +14,19 @@ public class User {
 
     private String password;
 
-    private boolean hui;
+    private boolean activity;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name =  "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    public boolean isHui() {
-        return hui;
+    public boolean isActivity() {
+        return activity;
     }
 
-    public void setHui(boolean hui) {
-        this.hui = hui;
+    public void setActivity(boolean activity) {
+        this.activity = activity;
     }
 
     public Long getId() {
@@ -60,4 +60,5 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
 }
