@@ -1,14 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello</title>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-<form method="post">
-    Пожалуйста, войдите в систему
-    <input type="submit" value="клик" name="btn"/>
-</form>
 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!-- Container wrapper -->
+    <div class="container">
+        <!-- Navbar brand -->
+        <a class="navbar-brand align-self-center" href="#">Map detection</a>
+
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left links -->
+            <ul class="header_menu navbar-nav ms-auto mb-2 mb-lg-0" >
+                <li class="nav-item">
+                    <a href="#" class="header_menu__link nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="../static/images/speedometer2-w.svg" alt="map">
+                        <img class="icon-svg align-self-center" src="../static/images/speedometer2.svg" alt="map">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="../static/images/map-w.svg" alt="map">
+                        <img class="icon-svg align-self-center" src="../static/images/map.svg" alt="map">
+                        Map
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="../static/images/table-w.svg" alt="map">
+                        <img class="icon-svg align-self-center" src="../static/images/table.svg" alt="map">
+                        Table
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="/images/person-circle-w.svg" alt="map">
+                        <img class="icon-svg align-self-center" src="/images/person-circle.svg" alt="map">
+                        Personal
+                    </a>
+                </li>
+            </ul>
+            <!-- <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-outline-light px-3 me-2">
+                    Login
+                </button>
+                <button type="button" class="btn btn-warning me-3">
+                    Sign up
+                </button>
+            </div> -->
+            <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+
+<main>
+    <div class="bg-dark text-secondary px-4 py-5 text-center">
+        <div class="py-5">
+            <h1 class="display-5 fw-bold text-white">Вам нужно авторизоваться</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="fs-5 mb-4">Какие-то приветственные слова</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <form method="post">
+<!--                        style="display: none"-->
+                        <input  class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" type="submit" value="клик" name="btn"/>
+                    </form>
+<!--                    <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Custom button</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="b-example-divider mb-0"></div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
