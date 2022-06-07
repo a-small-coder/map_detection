@@ -1,5 +1,6 @@
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+
 #map {
   height: 100%;
 }
@@ -12,4 +13,113 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+/* Color of the links BEFORE scroll */
+.navbar-scroll .nav-link,
+.navbar-scroll .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #262626;
+}
+
+/* Color of the navbar BEFORE scroll */
+.navbar-scroll {
+  background-color: #FFC017;
+}
+
+/* Color of the links AFTER scroll */
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #262626;
+}
+
+/* Color of the navbar AFTER scroll */
+.navbar-scrolled {
+  background-color: #fff;
+}
+
+/* An optional height of the navbar AFTER scroll */
+.navbar.navbar-scroll.navbar-scrolled {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+.navbar-brand {
+  font-size: unset;
+  height: 3.5rem;
+}
+
+.done, .wait, .in_work{
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 15px;
+
+}
+
+.done{
+    background-color: #46BFBD;
+}
+
+.wait{
+    background-color: #F7464A;
+}
+
+.in_work{
+    background-color: #FDB45C;
+}
+
+.navbar-scroll .nav-link,
+.navbar-scroll .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #262626;
+}
+
+/* Color of the navbar BEFORE scroll */
+.navbar-scroll {
+  background-color: #FFC017;
+}
+
+/* Color of the links AFTER scroll */
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #262626;
+}
+
+/* Color of the navbar AFTER scroll */
+.navbar-scrolled {
+  background-color: #fff;
+}
+
+/* An optional height of the navbar AFTER scroll */
+.navbar.navbar-scroll.navbar-scrolled {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+.navbar-brand {
+  font-size: 20px;
+  height: 2rem;
+}
+
+.header_menu > li > a:hover, .navbar-brand:hover{
+    color: #6c757d !important;
+}
+
+.header_menu > li > a:hover > .icon-svg{
+    display: block;
+}
+.header_menu > li > a:hover > .icon-svg_white{
+    display: none;
+}
+
+
+.icon-svg_white{
+    height: 20px;
+    width: 20px;
+    display: block;
+}
+.icon-svg{
+    height: 20px;
+    width: 20px;
+    display: none;
 }

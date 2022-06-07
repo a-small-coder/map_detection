@@ -30,8 +30,12 @@ public class Point {
         @Column
         private String image_path;
 
+
         @Column
         private String name;
+
+        @Column
+        private String status;
 
         public Long getId() {
             return id;
@@ -103,26 +107,36 @@ public class Point {
 
         public void setName(String name) { this.name = name; }
 
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
     public Point() {
     }
 
-    public Point (String lat, String lng, LocalDate date,String address) {
+    public Point (String lat, String lng, LocalDate date,String address, String status) {
         this.lat = lat;
         this.lng = lng;
         this.date = date;
         this.address = address;
+        this.status = status;
     }
 
-    public Point (String lat, String lng, LocalDate date,String address, String image_path) {
+    public Point (String lat, String lng, LocalDate date,String address, String image_path, String status) {
         this.lat = lat;
         this.lng = lng;
         this.date = date;
         this.address = address;
         this.image_path = image_path;
+        this.status = status;
     }
 
     public Point(String lat, String lng, String type, LocalDate date, String size, String address, String image_path,
-                 String name) {
+                 String name, String status) {
         this.lat = lat;
         this.lng = lng;
         this.type = type;
@@ -131,6 +145,7 @@ public class Point {
         this.address = address;
         this.image_path = image_path;
         this.name = name;
+        this.status = status;
     }
 }
 
