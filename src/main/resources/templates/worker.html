@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Список повреждений</title>
+    <style type="text/css">
+      table{
+          height: 100%;
+          font-weight: 100%;
+      }
+  </style>
+</head>
+
+<body>
+<div>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+<form action="" method="post">
+    <table border="1" id="table">
+        <caption></caption>
+        <tr>
+            <th>id</th>
+            <th>Широта</th>
+            <th>Долгота</th>
+            <th>Тип дефекта</th>
+            <th>Срок исправления</th>
+            <th>Ответственный за участок</th>
+        </tr>
+        <tr th:each="point :${points}">
+            <td><p th:text="${point.id}"/></td>
+            <td><p th:text="${point.lat}"/></td>
+            <td><p th:text="${point.lng}"/></td>
+            <td><p th:text="${point.type}"/></td>
+            <td><p th:text="${point.date}"/></td>
+            <td><p th:text="${point.name}"/></td>
+            <td><a th:href="'/map/' + ${point.id}">Перейти</a></td>
+        </tr>
+    </table>
+</form>
+<form action="/map/all" target="_blank">
+    <button>Посмотреть все</button>
+</form>
+</body>
+</html>

@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller
-//@PreAuthorize("hasAuthority('USER')")
 public class MapController {
     @Autowired
     private PointRepository pointRepository;
