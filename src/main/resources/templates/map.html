@@ -4,37 +4,27 @@
     <title>Road detection map</title>
     <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" type="text/css" href="../static/style.css" th:href="@{/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="/style.css" th:href="@{/style.css}"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <style type="text/css">
-      div{
-        top: 0%;
-        width: 70%;
-      }
-      #content{
-        position: absolute;
-        left:75%;
-        top: 0%;
-      }
-    </style>
 <!--    данные для построения карты и маркера-->
-    <ul th:each="item :${point_data1}">
+    <ul th:each="item :${point_data1}" style="display: none;">
         <input type="hidden" id="lat" th:value="${item.lat}"/>
         <input type="hidden" id="lng" th:value="${item.lng}"/>
     </ul>
-    <script type="text/javascript" src="../static/map.js" th:src="@{/map.js}"></script>
+    <script type="text/javascript" src="/map.js" th:src="@{/map.js}"></script>
     <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9HdzDuOWqmlv-nc3A8MIxKeglFhAT4Tg&amp;callback=initMap&amp;v=weekly"
             async="async"
     ></script>
 </head>
+<body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <!-- Container wrapper -->
     <div class="container">
         <!-- Navbar brand -->
-        <a class="navbar-brand align-self-center" href="#">Map detection</i></a>
+        <a class="navbar-brand align-self-center" href="/">Map detection</i></a>
 
         <!-- Toggle button -->
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
@@ -46,44 +36,46 @@
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left links -->
-            <ul class="header_menu navbar-nav ms-auto mb-2 mb-lg-0" >
+            <ul class="header_menu navbar-nav ms-auto mb-2 mb-lg-0 align-items-baseline" >
                 <li class="nav-item">
-                    <a href="#" class="header_menu__link nav-link text-white d-flex flex-column text-center">
-                        <img class="icon-svg_white align-self-center" src="../static/images/speedometer2-w.svg" alt="map">
-                        <img class="icon-svg align-self-center" src="../static/images/speedometer2.svg" alt="map">
+                    <a href="/" class="header_menu__link nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="/images/speedometer2-w.svg" alt="">
+                        <img class="icon-svg align-self-center" src="/images/speedometer2.svg" alt="">
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white d-flex flex-column text-center">
-                        <img class="icon-svg_white align-self-center" src="../static/images/map-w.svg" alt="map">
-                        <img class="icon-svg align-self-center" src="../static/images/map.svg" alt="map">
+                    <a href="/map/all" class="nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="/images/map-w.svg" alt="">
+                        <img class="icon-svg align-self-center" src="/images/map.svg" alt="">
                         Map
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white d-flex flex-column text-center">
-                        <img class="icon-svg_white align-self-center" src="../static/images/table-w.svg" alt="map">
-                        <img class="icon-svg align-self-center" src="../static/images/table.svg" alt="map">
+                    <a href="/" class="nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="/images/table-w.svg" alt="">
+                        <img class="icon-svg align-self-center" src="/images/table.svg" alt="">
                         Table
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white d-flex flex-column text-center">
-                        <img class="icon-svg_white align-self-center" src="../static/images/person-circle-w.svg" alt="map">
-                        <img class="icon-svg align-self-center" src="../static/images/person-circle.svg" alt="map">
+                    <a href="/admin" class="nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="/images/person-circle-w.svg" alt="">
+                        <img class="icon-svg align-self-center" src="/images/person-circle.svg" alt="">
                         Personal
                     </a>
                 </li>
+                <li class="nav-item ml-4" style="margin-left: 20px;">
+                    <form th:action="@{/logout}" method="post"></form>
+                    <button type="submit" value="Logout" class="nav-link _logout text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="/images/door-open-w.svg" alt="">
+                        <img class="icon-svg align-self-center" src="/images/door-open.svg" alt="">
+                        Logout
+                    </button>
+                </form>
+                </li>
             </ul>
-            <!-- <div class="d-flex align-items-center">
-                <button type="button" class="btn btn-outline-light px-3 me-2">
-                    Login
-                </button>
-                <button type="button" class="btn btn-warning me-3">
-                    Sign up
-                </button>
-            </div> -->
+
             <!-- Left links -->
         </div>
         <!-- Collapsible wrapper -->
@@ -92,15 +84,21 @@
 </nav>
 <!-- Navbar -->
 
-<body>
-<div id="map"></div>
-<div id="content" th:each="data :${point_data2}">
-    <!-- вывод данных из бд -->
-    <img id="image" th:src="${data.image_path}" width="25%" height="25%"/>
-    <p><label th:text="${data.type}"></label></p>
-    <p><label th:text="${data.size}"></label></p>
-    <p><label th:text="${data.address}"></label></p>
+<div class="map-page__wrapper d-flex mr-4">
+    <div class="map-page__map" id="map"></div>
+    <div class="map-page__info" id="content" th:each="data :${point_data2}">
+        <div class="card" style="width: 18rem;">
+            <img id="image" src="/image/test.png" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title" th:text="${data.type}"></h5>
+            <p class="card-text" th:text="${data.size}"></p>
+            <p class="card-text" th:text="${data.address}"></p>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>

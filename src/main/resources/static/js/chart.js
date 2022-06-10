@@ -1,4 +1,6 @@
 //pie
+var message = /*[[${points}]]*/ "";
+    console.log(message)
 var ctxP = document.getElementById("pieChart").getContext('2d');
 var myPieChart = new Chart(ctxP, {
   type: 'pie',

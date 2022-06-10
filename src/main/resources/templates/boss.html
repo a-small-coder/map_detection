@@ -12,35 +12,203 @@
 </head>
 
 <body>
-<div>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Container wrapper -->
+    <div class="container">
+        <!-- Navbar brand -->
+        <a class="navbar-brand align-self-center" href="/">Map detection</i></a>
+
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left links -->
+            <ul class="header_menu navbar-nav ms-auto mb-2 mb-lg-0 align-items-baseline" >
+                <li class="nav-item">
+                    <a href="/" class="header_menu__link nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="/images/speedometer2-w.svg" alt="">
+                        <img class="icon-svg align-self-center" src="/images/speedometer2.svg" alt="">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/map/all" class="nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="/images/map-w.svg" alt="">
+                        <img class="icon-svg align-self-center" src="/images/map.svg" alt="">
+                        Map
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="/images/table-w.svg" alt="">
+                        <img class="icon-svg align-self-center" src="/images/table.svg" alt="">
+                        Table
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin" class="nav-link text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="/images/person-circle-w.svg" alt="">
+                        <img class="icon-svg align-self-center" src="/images/person-circle.svg" alt="">
+                        Personal
+                    </a>
+                </li>
+                <li class="nav-item ml-4" style="margin-left: 20px;">
+                    <form th:action="@{/logout}" method="post"></form>
+                    <button type="submit" value="Logout" class="nav-link _logout text-white d-flex flex-column text-center">
+                        <img class="icon-svg_white align-self-center" src="/images/door-open-w.svg" alt="">
+                        <img class="icon-svg align-self-center" src="/images/door-open.svg" alt="">
+                        Logout
+                    </button>
+                </form>
+                </li>
+            </ul>
+
+            <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+<main class="col-md-9 mr-auto ml-auto col-lg-10 px-md-4" style="margin: 0px auto;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+    </div>
+
+    <div style="max-width: 300px; max-height: 300px; margin-bottom: 80px;">
+        <canvas id="pieChart" style="display: block; margin-bottom: 40px;" height="500" width="600"></canvas>
+        <div class="mt-6 mb-4 d-flex justify-content-between">
+            <div class="done">Сделано</div>
+            <div class="in_work">В работе</div>
+            <div class="wait">Ожидает</div>
+        </div>
+    </div>
+
+    <div>
+    <a th:href="'/map/all'"><button type="button" class="btn btn-dark" style="width: 19.2em; margin-bottom: 30px;">Посмотреть все адреса</button></a>
+    </div>
+
+    <h2>Section title</h2>
+    <div class="table-responsive">
+        <table class="table align-middle mb-0 bg-white">
+            <thead class="bg-light">
+            <tr>
+                <th>Номер</th>
+                <th>Широта</th>
+                <th>Долгота</th>
+                <th>Адрес</th>
+                <th>Срок</th>
+                <th>Тип повреждения</th>
+                <th>Картинка</th>
+                <th>Статус</th>
+                <th>посмотреть</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="point :${points}">
+                <td><p th:text="${point.id}"/></td>
+                <td><p th:text="${point.lat}"/></td>
+                <td><p th:text="${point.lng}"/></td>
+                <td><p th:text="${point.address}"/></td>
+                <td><p th:text="${point.date}"/></td>
+                <td><p th:text="${point.type}"/></td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <img
+                                th:src="${point.image_path}"
+                                alt=""
+                                style="width: 45px; height: 45px"
+                        />
+                    </div>
+                </td>
+                <td th:switch="${point.status}">
+                    <span th:case="готово" class="badge badge-success done rounded-pill d-inline" th:text="${point.status}"></span>
+                    <span th:case="ожидает" class="badge badge-success in_work rounded-pill d-inline" th:text="${point.status}"></span>
+                    <span th:case="просрочено" class="badge badge-success wait rounded-pill d-inline" th:text="${point.status}"></span>
+                </td>
+
+                <td><a th:href="'/map/' + ${point.id}"><button type="button" class="btn btn-info w-100">Перейти</button></a>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<div class="container">
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Dashboard</a></li>
+            <li class="nav-item"><a href="/map/all" class="nav-link px-2 text-muted">Map</a></li>
+            <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Table</a></li>
+            <li class="nav-item"><a href="/admin" class="nav-link px-2 text-muted">Personal</a></li>
+        </ul>
+        <p class="text-center text-muted">© 2022 Company, Inc</p>
+    </footer>
 </div>
-<form action="" method="post">
-    <table border="1" id="table">
-        <caption></caption>
-        <tr>
-            <th>id</th>
-            <th>Широта</th>
-            <th>Долгота</th>
-            <th>Тип дефекта</th>
-            <th>Срок исправления</th>
-            <th>Ответственный за участок</th>
-        </tr>
-        <tr th:each="point :${points}">
-            <td><p th:text="${point.id}"/></td>
-            <td><p th:text="${point.lat}"/></td>
-            <td><p th:text="${point.lng}"/></td>
-            <td><p th:text="${point.type}"/></td>
-            <td><p th:text="${point.date}"/></td>
-            <td><p th:text="${point.name}"/></td>
-            <td><a th:href="'/map/' + ${point.id}">Перейти</a></td>
-        </tr>
-    </table>
-</form>
-<form action="/map/all" target="_blank">
-    <button>Посмотреть все</button>
-</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script th:inline="javascript">
+    const points = /*[[${points}]]*/ "";
+    console.log(points)
+
+    let data = {};
+    points.forEach(point => {
+        if (point.status in data){
+            data[point.status] += 1;
+        }
+        else{
+            data[point.status] = 1;
+        }
+    });
+    
+    let labels = [];
+    let values = [];
+    for (key in data){
+        labels.push(key);
+    }
+    labels.sort();
+    for (let i=0; i < labels.length; i+=1){
+        values.push(data[labels[i]]);
+    }
+    // console.log("data", data)
+    // console.log("labels", labels);
+    // console.log("values", values);
+    let done = document.getElementsByClassName("done")[0];
+    done.innerText = labels[0];
+    let in_work = document.getElementsByClassName("in_work")[0];
+    in_work.innerText = labels[1];
+    let wait = document.getElementsByClassName("wait")[0];
+    wait.innerText = labels[2];
+
+    var ctxP = document.getElementById("pieChart").getContext('2d');
+    var myPieChart = new Chart(ctxP, {
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+        data: values,
+        backgroundColor: ["#46BFBD", "#FDB45C", "#F7464A"],
+        hoverBackgroundColor: ["#5AD3D1", "#FFC870", "#FF5A5E"]
+        }]
+    },
+    options: {
+        legend: {
+            display: false
+        },
+        responsive: true
+    }
+    });
+</script>
+
 </body>
 </html>
